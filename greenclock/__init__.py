@@ -82,7 +82,9 @@ class every_hour(object):
 
             self.started = True
             now_ = datetime.now()
-            if self.hour:
+
+            #0 is indeed a valid hour, which we must check explicity since it's falsey
+            if self.hour is 0 or self.hour:
                 # Fixed hour in a day
                 # Next run will be the next day
                 scheduled = now_.replace(hour=self.hour, minute=self.minute, second=self.second, microsecond=0)
